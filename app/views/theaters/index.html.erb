@@ -1,0 +1,19 @@
+<h1>List of all Movie Theaters</h1>
+<hr>
+<table>
+  <tr>
+    <th>Movie Theaters</th>
+  </tr>
+  <% @theaters.each do |theater| %>
+    <tr>
+      <td><%= theater.name %></td>
+      <td>
+        <%= link_to("Show", theater_path(theater.id)) %>
+        <%= link_to("Edit", edit_theater_path(theater.id)) %>
+        <%= link_to("Delete", theater_path(theater.id), method: :delete, data: {confirm: "Are You Sure?"}) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<hr>
+<%= link_to("Add New Theatre", new_theater_path) %>

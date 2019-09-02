@@ -1,0 +1,17 @@
+<h1>Adding new movie to the list</h1>
+
+<%= link_to("<<Back to the list", movies_path) %>
+
+<%= form_for(@movie) do |m| %>
+  <p>
+    Name
+    <%= m.text_field :name %>
+  </p>
+  <p>
+    Year
+    <%= m.text_field :year %>
+  </p>
+  <p>
+    <%= m.submit value="Add Movie" %>
+  </p>
+<% end %>

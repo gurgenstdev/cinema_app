@@ -1,0 +1,13 @@
+<h1>Add New Movie Theatre</h1>
+
+<%= link_to("<<Back to the list", theaters_path) %>
+
+<%= form_for(@theater) do |t| %>
+  <p>
+    Name of the theater: <br>
+    <%= t.text_field :name %>
+  </p>
+  <p>
+    <%= t.submit value="Add Theater" %>
+  </p>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Displaying content of <%= @theater.name %></h1>
+<hr>
+<table>
+  <thead>
+    <td><b>Name</b></td>
+    <td><b>Year</b></td>
+  </thead>
+  <tbody>
+    <% @theaterMovies.each do |movie| %>
+    <tr>
+      <td><%= link_to(movie.name, "#") %></td>
+      <td><%= movie.year %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr>
+<%= link_to("<<Back to list", theaters_path)%>
+<%= link_to("Add Movie", "#")%>
