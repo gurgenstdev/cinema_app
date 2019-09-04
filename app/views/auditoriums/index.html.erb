@@ -1,0 +1,19 @@
+<h1>List of Auditoriums</h1>
+<hr>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Capacity</th>
+  </tr>
+  <% @auditoriums.each do |auditorium| %>
+  <tr>
+    <td><%= auditorium.name %></td>
+    <td><%= auditorium.capacity %></td>
+    <td><%= link_to "Show", auditorium_path(auditorium) %></td>
+    <td><%= link_to "Edit", edit_auditorium_path(auditorium) %></td>
+    <td><%= link_to "Delete", auditorium_path(auditorium), method: :delete, data: {confirm: "Are you sure?"}%></td>
+  </tr>
+  <% end %>
+</table>
+<hr>
+<%= link_to "Add New Auditorium", new_auditorium_path %>

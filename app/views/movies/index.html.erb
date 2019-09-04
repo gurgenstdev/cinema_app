@@ -3,8 +3,11 @@
 <table>
   <thead>
   <tr>
-    <td>Name</td>
-    <td>Year</td>
+    <th>Name</th>
+    <th>Year</th>
+    <th>Rating</th>
+    <th>Genre</th>
+    <th>Duration(Mins)</th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +15,9 @@
     <tr>
       <td><%= movie.name %></td>
       <td><%= movie.year %></td>
+      <td><%= movie.rating %></td>
+      <td><%= movie.genre %></td>
+      <td><%= movie.duration %></td>
       <td>
         <%= link_to("Edit", edit_movie_path(movie.id)) %>
         <%= link_to("Delete", movie_path(movie.id), method: :delete, data: {confirm: "Are you sure"}) %>

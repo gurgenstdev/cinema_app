@@ -22,7 +22,7 @@ class TheatersController < ApplicationController
 
   def show
     @theater = Theater.find(params[:id])
-    @theaterMovies = @theater.movies
+
   end
 
   def edit
@@ -47,12 +47,8 @@ class TheatersController < ApplicationController
     redirect_to (theaters_path)
   end
 
-  def disp
-
-  end
-
   private
   def theater_params
-    params.require(:theater).permit(:name)
+    params.require(:theater).permit(:name, :email, :address, :phone_number)
   end
 end

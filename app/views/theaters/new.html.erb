@@ -4,8 +4,20 @@
 
 <%= form_for(@theater) do |t| %>
   <p>
-    Name of the theater: <br>
+    Name:
     <%= t.text_field :name %>
+  </p>
+  <p>
+    Email:
+    <%= t.text_field :email %>
+  </p>
+  <p>
+    Address:
+    <%= t.text_field :address %>
+  </p>
+  <p>
+    Phone Number:
+    <%= t.text_field :phone_number %>
   </p>
   <p>
     <%= t.submit value="Add Theater" %>

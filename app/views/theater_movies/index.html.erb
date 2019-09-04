@@ -1,0 +1,31 @@
+<h1>List of all movies</h1>
+<%= link_to "<<Back to list", theater_path(@theater) %>
+<hr>
+<table style="text-align: center">
+  <thead>
+  <th>Name</th>
+  <th>Year</th>
+  <th>Rating</th>
+  <th>Genre</th>
+  <th>Duration(Mins)</th>
+  </thead>
+  <tbody>
+  <% @theaterMovies.each do |theaterMovie| %>
+    <tr>
+      <td><%= link_to(theaterMovie.movie.name, "#") %></td>
+      <td><%= theaterMovie.movie.year %></td>
+      <td><%= theaterMovie.movie.rating %></td>
+      <td><%= theaterMovie.movie.genre %></td>
+      <td><%= theaterMovie.movie.duration %></td>
+      <td>
+        <%= form_for [@theater, theaterMovie], method: :delete, data: {confirm: "Are You Sure?"} do %>
+          <%= hidden_field_tag(:theater_id, @theater.id) %>
+          <%= submit_tag("Delete") %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<hr>
+<%= link_to "Add New Movie", new_theater_theater_movie_path(@theater.id) %>

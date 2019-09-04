@@ -1,0 +1,14 @@
+<h1>Edit <%= @auditorium.name %></h1>
+<%= link_to "<<Back to the list", auditoriums_path %>
+
+<%= form_for(@auditorium) do |a| %>
+  <p>
+    <%= a.text_field :name %>
+  </p>
+  <p>
+    <%= a.text_field :capacity %>
+  </p>
+  <p>
+    <%= a.submit value="Edit Auditorium" %>
+  </p>
+<% end %>
