@@ -1,7 +1,7 @@
 <h1>Edit <%= @auditorium.name %></h1>
-<%= link_to "<<Back to the list", auditoriums_path %>
+<%= link_to "<<Back to the list", theater_auditoriums_path %>
 
-<%= form_for(@auditorium) do |a| %>
+<%= form_for @auditorium, url: theater_auditorium_path, method: :patch  do |a| %>
   <p>
     <%= a.text_field :name %>
   </p>

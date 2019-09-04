@@ -1,7 +1,7 @@
 <h1>Hello</h1>
-<%= link_to "<<Back to list", auditoriums_path %>
+<%= link_to "<<Back to list", theater_auditoriums_path %>
 
-<%= form_for(@auditorium, url: auditoriums_path, method: :post) do |a| %>
+<%= form_for(@auditorium, url: theater_auditoriums_path, method: :post) do |a| %>
   <p>
     <%= a.text_field :name %>
   </p>

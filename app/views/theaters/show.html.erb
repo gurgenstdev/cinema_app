@@ -21,6 +21,6 @@
 <hr>
 <form>
 <%= link_to "Movies", theater_theater_movies_path(@theater.id) %>
-<%= link_to "Auditorium", auditoriums_path %>
+<%= link_to "Auditorium", theater_auditoriums_path(@theater.id) %>
 <%= link_to "Sessions", "#" %>
 </form>

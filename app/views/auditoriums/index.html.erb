@@ -1,4 +1,5 @@
-<h1>List of Auditoriums</h1>
+<h1><%= @theater.name %>'s auditoriums</h1>
+<%= link_to "<<Back to list", theater_path(@theater) %>
 <hr>
 <table>
   <tr>
@@ -9,11 +10,11 @@
   <tr>
     <td><%= auditorium.name %></td>
     <td><%= auditorium.capacity %></td>
-    <td><%= link_to "Show", auditorium_path(auditorium) %></td>
-    <td><%= link_to "Edit", edit_auditorium_path(auditorium) %></td>
-    <td><%= link_to "Delete", auditorium_path(auditorium), method: :delete, data: {confirm: "Are you sure?"}%></td>
+    <!-- <td><%#= link_to "Show", auditorium_path(auditorium) %></td> -->
+    <td><%= link_to "Edit", edit_theater_auditorium_path(@theater.id, auditorium.id) %></td>
+    <td><%= link_to "Delete", theater_auditorium_path(@theater.id, auditorium.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
   </tr>
   <% end %>
 </table>
 <hr>
-<%= link_to "Add New Auditorium", new_auditorium_path %>
+<%= link_to "Add New Auditorium", new_theater_auditorium_path %>
