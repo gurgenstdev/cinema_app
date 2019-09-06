@@ -15,6 +15,8 @@ class AuditoriumsController < ApplicationController
     if @theater.save
       redirect_to theater_auditoriums_path(@theater.id)
     else
+      @auditorium = Auditorium.new(auditorium_params)
+      flash[:error] = @theater.errors.full_messages.to_sentence
       render 'new'
     end
   end
@@ -24,11 +26,13 @@ class AuditoriumsController < ApplicationController
   end
 
   def update
-    # return render json: params
+    @theater = Theater.find(params[:theater_id])
     @auditorium = Auditorium.find(params[:id])
     if (@auditorium.update_attributes(auditorium_params))
       redirect_to theater_auditoriums_path(params[:theater_id])
     else
+      #return render json: params
+      flash[:error] = @auditorium.errors.full_messages.to_sentence
       render 'edit'
     end
   end

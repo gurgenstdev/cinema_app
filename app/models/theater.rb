@@ -1,4 +1,9 @@
 class Theater < ApplicationRecord
+  validates :name, presence: true, length: {maximum: 30}
+  validates :address, presence: true, length: {maximum: 30}
+  validates :email, presence: true, length: {maximum: 30}
+  validates :phone_number, presence: true, length: {minimum: 6}
+
   has_many :theater_movies, dependent: :delete_all
   has_many :auditoriums, dependent: :delete_all
   has_many :movies, through: :theater_movies

@@ -2,6 +2,11 @@
 <%= link_to "<<Back to the list", theater_auditoriums_path %>
 
 <%= form_for @auditorium, url: theater_auditorium_path, method: :patch  do |a| %>
+  <% if flash[:error] %>
+    <div>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
   <p>
     <%= a.text_field :name %>
   </p>

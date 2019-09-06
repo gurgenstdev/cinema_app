@@ -2,10 +2,30 @@
 <%= link_to("<<Back to the list", theaters_path) %>
 
 <%= form_for(@theater) do |t| %>
+
+  <% if @theater.errors.any? %>
+    <% @theater.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  <% end %>
+
   <p>
-    Name of the theater: <br>
+    Name: <br>
     <%= t.text_field :name %>
   </p>
+  <p>
+    Email:
+    <%= t.text_field :email %>
+  </p>
+  <p>
+    Address:
+    <%= t.text_field :address %>
+  </p>
+  <p>
+    Phone Number:
+    <%= t.text_field :phone_number %>
+  </p>
+  <p>
   <p>
     <%= t.submit %>
   </p>

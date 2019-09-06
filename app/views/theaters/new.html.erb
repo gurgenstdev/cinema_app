@@ -1,8 +1,16 @@
 <h1>Add New Movie Theatre</h1>
 
 <%= link_to("<<Back to the list", theaters_path) %>
+<hr>
 
 <%= form_for(@theater) do |t| %>
+
+  <% if @theater.errors.any? %>
+    <% @theater.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  <% end %>
+
   <p>
     Name:
     <%= t.text_field :name %>

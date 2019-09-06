@@ -30,8 +30,6 @@ class MoviesController < ApplicationController
       redirect_to movies_path
     else
       # If fails, redisplay to fix problems
-      #
-      Theatre
       render('edit')
     end
   end
