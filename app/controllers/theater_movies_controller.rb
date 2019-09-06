@@ -1,30 +1,30 @@
 class TheaterMoviesController < ApplicationController
+  before_action :set_theater, only: [:index, :new, :create]
+
   def index
-    @theater = Theater.find(params[:theater_id])
     @theaterMovies = @theater.theater_movies
   end
 
   def new
-    @theater = Theater.find(params[:theater_id])
     @theaterMovies = TheaterMovie.new(theater_id: @theater.id)
     @movie = Movie.all
   end
 
   def create
-    #return render json: params
-    @theater = Theater.find(params[:theater_id])
     attributes = {theater_movies_attributes: [{movie_id: params[:movie_id]}]}
     @theater.assign_attributes(attributes)
-    if (@theater.save)
-      redirect_to theater_theater_movies_path
-    else
-      render theater_theater_movie_path
-    end
+    return redirect_to theater_theater_movies_path if (@theater.save)
+
+    render theater_theater_movie_path
   end
 
   def destroy
     @theaterMovies = TheaterMovie.find(params[:id])
     @theaterMovies.destroy
-    redirect_to theater_theater_movies_path
+    return redirect_to theater_theater_movies_path
+  end
+
+  def set_theater
+    @theater = Theater.find(params[:theater_id])
   end
 end

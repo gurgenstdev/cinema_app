@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :set_movie, only: [:edit, :update, :destroy]
+
   def index
     @movies = Movie.all
   end
@@ -8,39 +10,30 @@ class MoviesController < ApplicationController
   end
 
   def create
-    # Instantiate a new object using form parameters
     @movie = Movie.new(movie_params)
-    if (@movie.save)
-      # if succeeds, redirect to the index action
-      redirect_to(movies_path)
-    else
-      # if fails, redisplay to fix the problems
-      render('new')
-    end
+    return redirect_to(movies_path) if (@movie.save)
+    render('new')
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+
   end
 
   def update
-    @movie = Movie.find(params[:id])
-    if (@movie.update_attributes(movie_params))
-      # If update succeeds, redirect to index action
-      redirect_to movies_path
-    else
-      # If fails, redisplay to fix problems
-      render('edit')
-    end
+    return redirect_to movies_path if (@movie.update_attributes(movie_params))
+    render('edit')
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
-    redirect_to movies_path
+    return redirect_to movies_path
   end
 
   private
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
+
   def movie_params
     params.require(:movie).permit(:name, :year, :rating, :genre, :duration)
   end

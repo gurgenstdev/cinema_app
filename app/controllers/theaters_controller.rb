@@ -1,4 +1,6 @@
 class TheatersController < ApplicationController
+  before_action :set_theater, only: [:show, :edit, :update, :destroy]
+
   def index
     @theaters = Theater.all
   end
@@ -8,46 +10,34 @@ class TheatersController < ApplicationController
   end
 
   def create
-    # Instantiate a new object using form parameters
     @theater = Theater.new(theater_params)
-    # Save the object
-    if @theater.save
-      # if succeeds, redirect to the index action
-      redirect_to (theaters_path)
-    else
-      # if fails, redisplay to fix the problems
-      render('new')
-    end
+    return redirect_to (theaters_path) if @theater.save
+    render('new')
   end
 
   def show
-    @theater = Theater.find(params[:id])
 
   end
 
   def edit
-    @theater = Theater.find(params[:id])
+
   end
 
   def update
-    @theater = Theater.find(params[:id])
-    # Save the objece
-    if (@theater.update_attributes(theater_params))
-      # If update succeeds, redirect to index action
-      redirect_to theaters_path
-    else
-      # If fails, redisplay to fix problems
-      render('edit')
-    end
+    return redirect_to theaters_path if (@theater.update_attributes(theater_params))
+    render('edit')
   end
 
   def destroy
-    @theater = Theater.find(params[:id])
     @theater.destroy
     redirect_to (theaters_path)
   end
 
   private
+  def set_theater
+    @theater = Theater.find(params[:id])
+  end
+
   def theater_params
     params.require(:theater).permit(:name, :email, :address, :phone_number)
   end
